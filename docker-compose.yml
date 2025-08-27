@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: robotapp:latest
+    container_name: robotapp
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT:-3306}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+      - APP_PORT=${APP_PORT:-8080}
+    stdin_open: true
+    tty: true      
+    ports:
+      - "8080:8080"

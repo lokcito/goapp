@@ -1,0 +1,32 @@
+{{ define "title" }}Lista de Robots{{ end }}
+{{ template "layout.html" . }}
+
+{{ define "content" }}
+<h1>Robots</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th><th>Nombre</th><th>Descripcion</th><th>Creado</th><th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{ range .robots }}
+    <tr>
+      <td>{{ .ID }}</td>
+      <td>{{ .Nombre }}</td>
+      <td>{{ .Descripcion }}</td>
+      <td>{{ .CreatedAt.Format "2006-01-02 15:04:05" }}</td>
+      <td>
+        <a href="/robots/{{ .ID }}" class="btn btn-sm btn-primary">Ver</a>
+        <a href="/robots/{{ .ID }}/edit" class="btn btn-sm btn-secondary">Editar</a>
+        <form method="post" action="/robots/{{ .ID }}/delete" style="display:inline">
+          <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Eliminar?')">Eliminar</button>
+        </form>
+      </td>
+    </tr>
+  {{ else }}
+    <tr><td colspan="5">No hay robots</td></tr>
+  {{ end }}
+  </tbody>
+</table>
+{{ end }}

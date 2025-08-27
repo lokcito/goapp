@@ -1,0 +1,18 @@
+{{ define "title" }}Editar Robot{{ end }}
+{{ template "layout.html" . }}
+
+{{ define "content" }}
+<h1>Editar</h1>
+<form method="post" action="/robots/{{ .robot.ID }}/update">
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input name="nombre" class="form-control" value="{{ .robot.Nombre }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <textarea name="descripcion" class="form-control" rows="4">{{ .robot.Descripcion }}</textarea>
+  </div>
+  <button class="btn btn-primary">Guardar</button>
+  <a class="btn btn-secondary" href="/robots">Cancelar</a>
+</form>
+{{ end }}
