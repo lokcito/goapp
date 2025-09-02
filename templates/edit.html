@@ -1,7 +1,7 @@
 {{ template "header" . }}
 
 <h1>Editar</h1>
-<form method="post" action="/robots/{{ .robot.ID }}/update">
+<form method="post" action="/robots/update/{{ .robot.ID }}">
   <div class="mb-3">
     <label class="form-label">Nombre</label>
     <input name="nombre" class="form-control" value="{{ .robot.Nombre }}" required>
