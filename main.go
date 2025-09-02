@@ -6,6 +6,8 @@ import (
     "log"
     "net/http"
     "os"
+    "os/signal"
+    "syscall"    
 
     "github.com/gin-gonic/gin"
     "gorm.io/driver/mysql"
@@ -80,7 +82,19 @@ func main() {
     r.POST("/robots/delete/:id", robotController.Delete)
 
     log.Printf("listening on :%s\n", port)
+
+    log.Printf("Ctrl + C to exit")
+
     if err := r.Run(":" + port); err != nil {
         log.Fatal(err)
     }
+
+    stop := make(chan os.Signal, 1)
+
+    signal.Notify(stop, os.Interrupt, syscall.SIGTERM)
+
+    <-stop
+
+    log.Printf("shutting down gracefully")
+    
 }

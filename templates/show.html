@@ -1,9 +1,8 @@
-{{ define "title" }}Ver Robot{{ end }}
-{{ template "layout.html" . }}
+{{ template "header" . }}
 
-{{ define "content" }}
 <h1>{{ .robot.Nombre }}</h1>
 <p>{{ .robot.Descripcion }}</p>
 <p><small>Creadox: {{ .robot.CreatedAt.Format "2006-01-02 15:04:05" }}</small></p>
 <a class="btn btn-secondary" href="/robots">Volver</a>
-{{ end }}
+
+{{ template "footer" . }}

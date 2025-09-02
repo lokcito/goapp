@@ -1,7 +1,5 @@
-{{ define "title" }}Lista de Robots{{ end }}
-{{ template "layout.html" . }}
+{{ template "header" . }}
 
-{{ define "content" }}
 <h1>Robots</h1>
 <table class="table table-striped">
   <thead>
@@ -17,9 +15,9 @@
       <td>{{ .Descripcion }}</td>
       <td>{{ .CreatedAt.Format "2006-01-02 15:04:05" }}</td>
       <td>
-        <a href="/robots/{{ .ID }}" class="btn btn-sm btn-primary">Ver</a>
-        <a href="/robots/{{ .ID }}/edit" class="btn btn-sm btn-secondary">Editar</a>
-        <form method="post" action="/robots/{{ .ID }}/delete" style="display:inline">
+        <a href="/robots/show/{{ .ID }}" class="btn btn-sm btn-primary">Ver</a>
+        <a href="/robots/edit/{{ .ID }}" class="btn btn-sm btn-secondary">Editar</a>
+        <form method="post" action="/robots/delete/{{ .ID }}" style="display:inline">
           <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Eliminar?')">Eliminar</button>
         </form>
       </td>
@@ -29,4 +27,5 @@
   {{ end }}
   </tbody>
 </table>
-{{ end }}
+
+{{ template "footer" . }}

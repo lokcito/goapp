@@ -1,7 +1,4 @@
-{{ define "title" }}Nuevo Robot{{ end }}
-{{ template "layout.html" . }}
-
-{{ define "content" }}
+{{ template "header" . }}
 <h1>Nuevo Robot</h1>
 {{ if .error }}
   <div class="alert alert-danger">{{ .error }}</div>
@@ -17,4 +14,5 @@
   </div>
   <button class="btn btn-primary">Crear</button>
 </form>
-{{ end }}
+
+{{ template "footer" . }}

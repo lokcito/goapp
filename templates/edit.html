@@ -1,7 +1,5 @@
-{{ define "title" }}Editar Robot{{ end }}
-{{ template "layout.html" . }}
+{{ template "header" . }}
 
-{{ define "content" }}
 <h1>Editar</h1>
 <form method="post" action="/robots/{{ .robot.ID }}/update">
   <div class="mb-3">
@@ -15,4 +13,5 @@
   <button class="btn btn-primary">Guardar</button>
   <a class="btn btn-secondary" href="/robots">Cancelar</a>
 </form>
-{{ end }}
+
+{{ template "footer" . }}
