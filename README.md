@@ -2,6 +2,18 @@
 cp .env.example .env
 # editar .env con tus datos DB
 
+# instalar go usando goenv
+brew install goenv
+
+# instalar go
+goenv install 1.22.2
+
+# seleccionar version
+goenv global 1.22.2
+
+# instalar dependencias
+go mod tidy
+
 # build local
 go build -o robotapp main.go
 
